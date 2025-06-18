@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2 Challenge</title>
+</head>
+<body>
+        <div class="container"></div>
+        <script src="https://unpkg.com/supersimpledev/react.js"></script>
+        <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+        <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+        <script type="text/babel">
+            function ProductDetails({name, price, discountPrice, imageSrc}) {
+                const priceElement = discountPrice ? (
+                    <>
+                        <del><p>Price: {price}</p></del>
+                        <p>Discount Price: {discountPrice}</p>
+                    </>
+                ) : (
+                    <p>Price: {price}</p>
+                );
+                return (
+                    <div>
+                        <img src={imageSrc} alt={name} width="150" />
+                        {name === "Cotton socks" && (
+                            <div>
+                                {imageSrc}
+                                <p>Cotton socks</p>
+                                {priceElement}
+                                <button>Add to Cart</button>
+                            </div>
+                        )}
+                        {name === "Tennis balls" && (
+                            <div>
+                                {imageSrc}
+                                <p>Tennis balls</p>
+                                {priceElement}
+                                <button>Add to Cart</button>
+                            </div>
+                        )}
+                        
+                        {name === "Plain T-shirt" && (
+                            <div>
+                                {imageSrc}
+                                <p>Plain T-shirt</p>
+                                {priceElement}
+                                <button>Add to Cart</button>
+                            </div>
+                        )}
+                    
+                    </div>
+                );
+            }
+
+            function App() {
+                return (
+                    <>
+                        <ProductDetails
+                            imageSrc = "./images/cotton-socks.png"
+                            name = "Cotton socks"
+                            price = "$10.90"
+                            discountPrice = "$5.45"
+                        />
+                        <ProductDetails
+                            imageSrc = "./images/tennis-balls.png"
+                            name = "Tennis balls"
+                            price = "$6"
+                        />
+                        <ProductDetails 
+                            imageSrc = "./images/plain-t-shirt.png"
+                            name = "Plain T-shirt"
+                            price = "$7.99"
+                        />
+                    </>
+                );
+            }
+
+            const container = document.querySelector('.container');
+            ReactDOM.createRoot(container).render(<App />);
+        </script>
+</body>
+</html>
